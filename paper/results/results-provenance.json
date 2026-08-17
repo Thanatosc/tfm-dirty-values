@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "generator_version": "1.0",
+  "source": {
+    "path": "results/full_study/analysis.json",
+    "bytes": 129092,
+    "sha256": "7d9389384762bc04bd352f0540f225d05d92b8f60b99d309232adc0d9ebbfe30"
+  },
+  "generator": {
+    "path": "scripts/generate_paper_results.py",
+    "sha256": "1d6f607156eabf9370b59869a8cfa4926fe4b1742319a8391df828cbfe9417bd"
+  },
+  "derivation_policy": {
+    "source_artifacts": [
+      "results/full_study/analysis.json"
+    ],
+    "new_hypothesis_tests": false,
+    "bootstrap_recomputed": false,
+    "experiment_outputs_mutated": false
+  },
+  "outputs": [
+    {
+      "path": "paper/results/figure-package.md",
+      "bytes": 6831,
+      "sha256": "40876359f42594d1de17b98490670c772633457b4f0a00d44e847bbb4ad24ff9"
+    },
+    {
+      "path": "paper/results/figures/figure_1_roc_auc_dose_response.pdf",
+      "bytes": 30282,
+      "sha256": "fb3b8def85b8057baf22bfbc2e5e73760a989676feb2c547172cc6f6151a10cf"
+    },
+    {
+      "path": "paper/results/figures/figure_1_roc_auc_dose_response.png",
+      "bytes": 261539,
+      "sha256": "f105eec18bf2393e960204a9e83b0cfe24d4ce774a218878a1385fd7efb81010"
+    },
+    {
+      "path": "paper/results/figures/figure_2_confirmatory_effects.pdf",
+      "bytes": 18888,
+      "sha256": "d4b953469d62bf0187f216dd247c89504a0387f0ba6600e03bcf901da50d4872"
+    },
+    {
+      "path": "paper/results/figures/figure_2_confirmatory_effects.png",
+      "bytes": 73059,
+      "sha256": "6c03607278f9f71f263f433af61021d3c15d8626263f9c0627ca152d8fe983ba"
+    },
+    {
+      "path": "paper/results/tables/table_1_confirmatory_hypotheses.csv",
+      "bytes": 2548,
+      "sha256": "9118b7f7e43d2c77a5edc02cb26be5c1657d669f5163db52b0e9b11386f6aef5"
+    },
+    {
+      "path": "paper/results/tables/table_1_confirmatory_hypotheses.md",
+      "bytes": 2408,
+      "sha256": "5a9469c334bdcf8c989eb7317d2cbd33f89cac483d78a99601a40278ff0ded8b"
+    },
+    {
+      "path": "paper/results/tables/table_2_roc_auc_rate_050_by_model.csv",
+      "bytes": 2851,
+      "sha256": "0f2d04c1072590c5698ccee09eaa6710244d436bcde7a9a36e77b7bdc12109ca"
+    },
+    {
+      "path": "paper/results/tables/table_2_roc_auc_rate_050_by_model.md",
+      "bytes": 2090,
+      "sha256": "85a0107b344d1d0be08fbf073342843c0ae749765c3d9b826a5353a622cfd9a0"
+    },
+    {
+      "path": "paper/results/tables/table_3_rq4_summary.csv",
+      "bytes": 438,
+      "sha256": "d5bc17d72279c9c470b75484d103d5abeeb5f3a9082664813bed350fa4153785"
+    },
+    {
+      "path": "paper/results/tables/table_3_rq4_summary.md",
+      "bytes": 980,
+      "sha256": "f41ee9d27a8b0fdc9cb89f81d566de76716068e79a469d4f97db9a8869cf2aa5"
+    },
+    {
+      "path": "paper/results/tables/table_s1_roc_auc_dose_response.csv",
+      "bytes": 10936,
+      "sha256": "0db2b584661e4a45d8f32a445eb75835d9a5bd334e427edfef7ae54e398a565e"
+    },
+    {
+      "path": "paper/results/tables/table_s2_secondary_metrics_rate_050.csv",
+      "bytes": 11346,
+      "sha256": "8b75c0b9a6be389338ef0f9fd5e7b962ab63083915382ed02b88dff02dc15dd0"
+    },
+    {
+      "path": "paper/results/tables/table_s3_rq4_onset_diagnostic.csv",
+      "bytes": 1261,
+      "sha256": "3c6bd0287681aef673acafcd8b461563f45d3f4d9da569e40d43ef5da0eac925"
+    }
+  ]
+}

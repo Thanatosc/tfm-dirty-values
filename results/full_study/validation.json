@@ -1,0 +1,21 @@
+{
+  "analysis_report_bytes": 129092,
+  "analysis_report_sha256": "7D9389384762BC04BD352F0540F225D05D92B8F60B99D309232ADC0D9EBBFE30",
+  "analysis_rerun_exact_match": true,
+  "analysis_rerun_sha256": "7D9389384762BC04BD352F0540F225D05D92B8F60B99D309232ADC0D9EBBFE30",
+  "authorized_runtime_code_identity_sha256": "9325544b8adb82eaa4ddbc99c12b01364315edeaddf17e7fe68d7e41efe8700d",
+  "compatibility_amendment_sha256": "0D676ECF7B0AE1BB13AA06FB687708FB1CDD53878CAA20A88F79993F6F92A16A",
+  "compatibility_adapter_sha256": "4141C84D7593551176D5510FF0C262AC70D84D5192C754870DE40CD2C4C90F65",
+  "completed_tasks": 4575,
+  "failed_tasks": 0,
+  "output_manifest_identity_sha256": "1f3afe5373a6b35f4fba0d0ceb7e0900cffd9b58b85fed00205ae7e9aac08e8a",
+  "persisted_result_mismatches": 0,
+  "schema_version": "1.0",
+  "source_database_sha256_before_analysis": "7B9ADA6E20D91529FECE380AA062C67617AB3E09224A4FD80BB95E1B3A701B52",
+  "status": "VALIDATED_WITH_COMPATIBILITY_AMENDMENT",
+  "test_result": "45 passed",
+  "validated_at": "2026-08-17T16:19:45.0640353+08:00",
+  "validation_report_sha256": "6E83E123DA92124D2C8AA1997C8C5EFEC9C89DDBDD86F7B835D278965070F7C8",
+  "verification_scope": "Deterministic analysis and persisted-result integrity; the complete model panel was not independently rerun",
+  "verification_script_sha256": "E91F43FDD56356ED2C11D64BE15AFB9C139F1F9F36AB794B4A481AD477FB1594"
+}

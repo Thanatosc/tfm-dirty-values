@@ -1,0 +1,95 @@
+schema_version: "1.0"
+experiment_id: "dirty-values-kill-test-v1"
+protocol_version: "phase1_prereg_v1"
+status: "blocked_pending_phase0_gate"
+
+source_pipeline:
+  path: "external/tfm-missingness"
+  reused_components: [data_loader, model_adapters, metrics, seed_policy, persistent_queue]
+  excluded_components: [missingness_injection, missingness_results, missingness_decisions]
+
+datasets:
+  - {data_id: 31, name: credit-g, role: mixed_type_anchor}
+  - {data_id: 44, name: spambase, role: numeric_generalization}
+  - {data_id: 1049, name: pc4, role: numeric_generalization}
+
+dataset_constraints:
+  rows: {min: 1000, max: 10000}
+  features: {min: 10, max: 100}
+  classes: 2
+  native_missing_fraction: {max_exclusive: 0.05}
+  reusable_license_required: true
+
+seeds: [1907, 2027, 4049]
+split:
+  test_size: 0.30
+  stratified: true
+
+models:
+  enabled: [tabpfn, xgboost]
+  tabpfn:
+    package: "tabpfn==2.2.1"
+    checkpoint: "external/tfm-missingness/models/tabpfn-v2/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt"
+    checkpoint_sha256: "CF8C519C01EAF1613EE91239006D57B1C806FF5F23AC1AEB1315BA1015210E49"
+    n_estimators: 8
+    device: cuda
+  tabiclv2:
+    package: "tabicl==2.1.1"
+    checkpoint: "external/tfm-missingness/models/tabiclv2/tabicl-classifier-v2-20260212.ckpt"
+    checkpoint_sha256: "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0"
+    checkpoint_version: "tabicl-classifier-v2-20260212.ckpt"
+    n_estimators: 8
+    batch_size: 8
+    device: cuda
+  xgboost:
+    package: "xgboost==3.2.0"
+    n_estimators: 100
+    tree_method: hist
+    n_jobs: 4
+  lightgbm:
+    package: "lightgbm==4.7.0"
+    n_estimators: 100
+    n_jobs: 4
+  random_forest:
+    package: "scikit-learn==1.6.1"
+    n_estimators: 500
+    n_jobs: 4
+
+corruptions:
+  enabled: [measurement_noise, outlier, quantization]
+  affected_cell_rates: [0.15, 0.50]
+  parameters:
+    measurement_noise: {sigma_ratio: 0.50}
+    outlier: {k: 10.0}
+    quantization: {method: equal_width_bins, bins: 8}
+  stress_parameters:
+    measurement_noise: {sigma_ratio: 1.00}
+    outlier: {k: 20.0}
+    quantization: {method: equal_width_bins, bins: 2}
+  full_panel_defaults:
+    unit_error: {factors: [1000.0, 0.001]}
+    categorical_error: {strategy: mixed, novel_level_fraction: 0.50}
+
+analysis:
+  primary_metric: roc_auc
+  primary_unit: dataset
+  primary_rate: 0.50
+  pass_tfm_degradation_auc: 0.05
+  pass_model_gap_auc: 0.02
+  stress_trigger_max_degradation_auc: 0.01
+  same_direction_requires_all_datasets: true
+
+worker:
+  max_attempts: 2
+  heartbeat_seconds: 15
+  stale_heartbeat_seconds: 120
+
+paths:
+  data_raw: data/raw/openml
+  data_processed: data/processed
+  result_dir: results/kill_test
+  database: results/kill_test/state.sqlite3
+  events: results/kill_test/events.jsonl
+  heartbeat: results/kill_test/heartbeat.json
+  control_dir: results/kill_test/control
+  outputs: results/kill_test/outputs

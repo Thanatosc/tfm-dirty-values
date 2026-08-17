@@ -1,0 +1,6 @@
+corruption,corruption_label,roc_auc_positive_means,roc_auc_ci_above_zero,balanced_accuracy_positive_means,balanced_accuracy_ci_above_zero,log_loss_positive_means,log_loss_ci_above_zero,ece_positive_means,ece_ci_above_zero
+measurement_noise,Measurement noise,5,5,5,5,5,4,4,3
+outlier,Outlier,5,5,5,5,5,5,4,4
+quantization,Quantization,5,5,5,5,5,4,4,2
+unit_error,Unit error,5,5,5,5,5,4,4,3
+categorical_error,Categorical error,5,5,5,5,5,4,4,3

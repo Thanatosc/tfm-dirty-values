@@ -1,0 +1,163 @@
+schema_version: "1.0"
+experiment_id: "dirty-values-full-study-v1"
+protocol_version: "phase2_prereg_v1"
+freeze_date: "2026-08-14"
+status: "blocked_pending_human_authorization"
+runnable: false
+
+outcome_boundary:
+  phase1_outcomes_used_for_go_no_go_only: true
+  phase2_outcomes_observed: false
+  stress_retest_allowed: false
+
+source_pipeline:
+  path: "external/tfm-missingness"
+  reused_components: [data_loader, model_adapters, metrics, seed_policy, persistent_queue]
+  excluded_components: [missingness_injection, missingness_results, missingness_decisions]
+
+full_panel:
+  path: data/full-panel.json
+  sha256: "F2B4A239EB0B03C718F2635088AAEC71FA90F41AE83C6FF61102AB24CA707D53"
+  expected_records: 11
+  expected_c5_records: 7
+
+datasets:
+  - {data_id: 3, name: kr-vs-kp, numeric_eligible: false, c5: true}
+  - {data_id: 24, name: mushroom, numeric_eligible: false, c5: true}
+  - {data_id: 31, name: credit-g, numeric_eligible: true, c5: true}
+  - {data_id: 44, name: spambase, numeric_eligible: true, c5: false}
+  - {data_id: 802, name: pbcseq, numeric_eligible: true, c5: true}
+  - {data_id: 1049, name: pc4, numeric_eligible: true, c5: false}
+  - {data_id: 1487, name: ozone-level-8hr, numeric_eligible: true, c5: false}
+  - {data_id: 1504, name: steel-plates-fault, numeric_eligible: true, c5: false}
+  - {data_id: 42193, name: compas-two-years, numeric_eligible: true, c5: true}
+  - {data_id: 44158, name: KDDCup09_upselling, numeric_eligible: true, c5: true}
+  - {data_id: 44160, name: rl, numeric_eligible: true, c5: true}
+
+dataset_constraints:
+  rows: {min: 1000, max: 10000}
+  features: {min: 10, max: 100}
+  classes: 2
+  native_missing_fraction: {max_exclusive: 0.05}
+  reusable_license_required: true
+
+seeds: [1907, 2027, 4049, 6029, 8089]
+split:
+  test_size: 0.30
+  stratified: true
+
+models:
+  enabled: [tabpfn, tabiclv2, xgboost, lightgbm, random_forest]
+  tfm_class: [tabpfn, tabiclv2]
+  tree_class: [xgboost, lightgbm, random_forest]
+  tabpfn:
+    package: "tabpfn==2.2.1"
+    checkpoint: "external/tfm-missingness/models/tabpfn-v2/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt"
+    checkpoint_sha256: "CF8C519C01EAF1613EE91239006D57B1C806FF5F23AC1AEB1315BA1015210E49"
+    n_estimators: 8
+    device: cuda
+  tabiclv2:
+    package: "tabicl==2.1.1"
+    checkpoint: "external/tfm-missingness/models/tabiclv2/tabicl-classifier-v2-20260212.ckpt"
+    checkpoint_sha256: "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0"
+    checkpoint_version: "tabicl-classifier-v2-20260212.ckpt"
+    n_estimators: 8
+    batch_size: 8
+    device: cuda
+  xgboost:
+    package: "xgboost==3.2.0"
+    n_estimators: 100
+    tree_method: hist
+    n_jobs: 4
+  lightgbm:
+    package: "lightgbm==4.7.0"
+    n_estimators: 100
+    n_jobs: 4
+  random_forest:
+    package: "scikit-learn==1.6.1"
+    n_estimators: 500
+    n_jobs: 4
+
+corruptions:
+  enabled: [measurement_noise, outlier, quantization, unit_error, categorical_error]
+  affected_cell_rates: [0.05, 0.15, 0.30, 0.50]
+  parameters:
+    measurement_noise: {sigma_ratio: 0.50}
+    outlier: {k: 10.0}
+    quantization: {method: equal_width_bins, bins: 8}
+    unit_error: {factors: [1000.0, 0.001]}
+    categorical_error: {strategy: mixed, novel_level_fraction: 0.50}
+  panels:
+    measurement_noise: [31, 44, 802, 1049, 1487, 1504, 42193, 44158, 44160]
+    outlier: [31, 44, 802, 1049, 1487, 1504, 42193, 44158, 44160]
+    quantization: [31, 44, 802, 1049, 1487, 1504, 42193, 44158, 44160]
+    unit_error: [31, 44, 802, 1049, 1487, 1504, 42193, 44158, 44160]
+    categorical_error: [3, 24, 31, 802, 42193, 44158, 44160]
+
+analysis:
+  primary_metric: roc_auc
+  secondary_metrics: [balanced_accuracy, log_loss, ece]
+  primary_rate: 0.50
+  primary_unit: dataset
+  seed_aggregation: arithmetic_mean
+  exact_test: two_sided_sign_flip_on_dataset_aggregates
+  alpha: 0.05
+  multiple_comparison: holm_within_rq_and_eligibility_panel
+  bootstrap_resamples: 10000
+  bootstrap_seed: 260814
+  confirmatory_hypotheses:
+    h1: mean_tfm_degradation_vs_zero
+    h2: mean_tfm_minus_mean_tree_degradation
+    h3: mean_all_model_degradation_slope_vs_zero
+  c5_family_is_separate: true
+  individual_model_contrasts: exploratory_effect_sizes_only
+  ece_onset_analysis: secondary_descriptive
+  compas_scope: predictive_robustness_only
+
+execution:
+  architecture: serial_worker
+  stop_semantics: finish_current_task_then_stop
+  resume_policy: requeue_interrupted_running_task_after_lock_acquisition
+  result_commit: atomic_json_before_sqlite_completion
+  require_complete_manifest_for_confirmatory_analysis: true
+
+expected_counts:
+  split_count: 55
+  clean_tasks: 275
+  numeric_corruption_tasks: 3600
+  categorical_corruption_tasks: 700
+  total_tasks: 4575
+
+runtime_estimation:
+  execution_mode: serial_single_worker_single_gpu
+  empirical_kill_test_wall_seconds: 270.590543
+  empirical_kill_test_tasks: 126
+  source_pipeline_phase2_wall_seconds: 71388.22
+  source_pipeline_phase2_tasks: 10920
+  data_preparation_minutes: [10, 30]
+  scenarios:
+    optimistic_hours: [6, 8]
+    expected_hours: [8, 12]
+    conservative_hours: [16, 30]
+  eta_policy: observed_completed_task_median_after_start
+
+worker:
+  max_attempts: 2
+  heartbeat_seconds: 15
+  stale_heartbeat_seconds: 120
+
+paths:
+  data_raw: data/raw/openml-full-study
+  data_processed: data/full-study-processed
+  result_dir: results/full_study
+  database: results/full_study/state.sqlite3
+  events: results/full_study/events.jsonl
+  heartbeat: results/full_study/heartbeat.json
+  control_dir: results/full_study/control
+  outputs: results/full_study/outputs
+  task_manifest: artifacts/phase2/full-study-task-manifest.json
+  preflight_report: artifacts/phase2/full-study-preflight.json
+  completion_report: results/full_study/completion.json
+  authorization: research/phase2-full-study-authorization.json
+  phase1_decision: results/kill_test/decision.json
+  phase1_validation: research/phase1-kill-test-validation.md

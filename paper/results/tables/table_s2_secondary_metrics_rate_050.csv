@@ -1,0 +1,76 @@
+corruption,corruption_label,model,model_label,model_family,metric,metric_label,affected_cell_rate,n_datasets,mean,median,ci_low,ci_high,positive_mean,ci_wholly_above_zero
+measurement_noise,Measurement noise,tabpfn,TabPFN v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.07071103,0.04831748,0.03577743,0.11162055,true,true
+measurement_noise,Measurement noise,tabpfn,TabPFN v2,TFM,log_loss,Log-loss increase,0.50,9,0.08656234,0.05564607,0.03334151,0.14980691,true,true
+measurement_noise,Measurement noise,tabpfn,TabPFN v2,TFM,ece,ECE increase,0.50,9,0.00552547,0.00506498,0.00188108,0.00946350,true,true
+measurement_noise,Measurement noise,tabiclv2,TabICL v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.07064979,0.04982430,0.03387670,0.11281517,true,true
+measurement_noise,Measurement noise,tabiclv2,TabICL v2,TFM,log_loss,Log-loss increase,0.50,9,0.08550468,0.05356913,0.03408816,0.14926653,true,true
+measurement_noise,Measurement noise,tabiclv2,TabICL v2,TFM,ece,ECE increase,0.50,9,0.00194945,0.00296582,-0.00246800,0.00610050,true,false
+measurement_noise,Measurement noise,xgboost,XGBoost,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05696019,0.04349206,0.03599582,0.08140925,true,true
+measurement_noise,Measurement noise,xgboost,XGBoost,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.09388036,0.07338896,0.05659894,0.13628136,true,true
+measurement_noise,Measurement noise,xgboost,XGBoost,Tree ensemble,ece,ECE increase,0.50,9,0.02641299,0.02139276,0.01394784,0.04005236,true,true
+measurement_noise,Measurement noise,lightgbm,LightGBM,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05588723,0.05164212,0.03604340,0.07926348,true,true
+measurement_noise,Measurement noise,lightgbm,LightGBM,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.08811405,0.07917253,0.05604835,0.12066470,true,true
+measurement_noise,Measurement noise,lightgbm,LightGBM,Tree ensemble,ece,ECE increase,0.50,9,0.01383838,0.01274110,0.00644729,0.02186677,true,true
+measurement_noise,Measurement noise,random_forest,Random Forest,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.04405024,0.05388385,0.02128499,0.06669565,true,true
+measurement_noise,Measurement noise,random_forest,Random Forest,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.02894716,0.05202505,-0.05834618,0.08993674,true,false
+measurement_noise,Measurement noise,random_forest,Random Forest,Tree ensemble,ece,ECE increase,0.50,9,-0.00847478,0.00216088,-0.04126034,0.02033861,false,false
+outlier,Outlier,tabpfn,TabPFN v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.13793887,0.14342859,0.08784298,0.18832225,true,true
+outlier,Outlier,tabpfn,TabPFN v2,TFM,log_loss,Log-loss increase,0.50,9,0.16070199,0.12260369,0.08174555,0.24469033,true,true
+outlier,Outlier,tabpfn,TabPFN v2,TFM,ece,ECE increase,0.50,9,0.00799900,0.00237913,0.00139139,0.01594328,true,true
+outlier,Outlier,tabiclv2,TabICL v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.13935840,0.14635344,0.08907166,0.19012521,true,true
+outlier,Outlier,tabiclv2,TabICL v2,TFM,log_loss,Log-loss increase,0.50,9,0.16531671,0.11682010,0.08785142,0.25037571,true,true
+outlier,Outlier,tabiclv2,TabICL v2,TFM,ece,ECE increase,0.50,9,0.01227245,0.00615884,0.00410037,0.02176068,true,true
+outlier,Outlier,xgboost,XGBoost,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.13509130,0.10815217,0.09036640,0.19005709,true,true
+outlier,Outlier,xgboost,XGBoost,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.22193262,0.17220934,0.14078081,0.33051896,true,true
+outlier,Outlier,xgboost,XGBoost,Tree ensemble,ece,ECE increase,0.50,9,0.05918023,0.03981568,0.03567360,0.08411497,true,true
+outlier,Outlier,lightgbm,LightGBM,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.12875546,0.11023551,0.08522930,0.18230932,true,true
+outlier,Outlier,lightgbm,LightGBM,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.17187974,0.15339395,0.09948939,0.26799432,true,true
+outlier,Outlier,lightgbm,LightGBM,Tree ensemble,ece,ECE increase,0.50,9,0.02192321,0.01616365,0.00792468,0.03919130,true,true
+outlier,Outlier,random_forest,Random Forest,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.13366984,0.10890411,0.07138088,0.21672830,true,true
+outlier,Outlier,random_forest,Random Forest,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.12695619,0.12389356,0.01289409,0.24266261,true,true
+outlier,Outlier,random_forest,Random Forest,Tree ensemble,ece,ECE increase,0.50,9,-0.00106676,-0.00027490,-0.02914443,0.02950602,false,false
+quantization,Quantization,tabpfn,TabPFN v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.04320033,0.02888616,0.02134785,0.06913458,true,true
+quantization,Quantization,tabpfn,TabPFN v2,TFM,log_loss,Log-loss increase,0.50,9,0.05250965,0.02707050,0.01904228,0.09135174,true,true
+quantization,Quantization,tabpfn,TabPFN v2,TFM,ece,ECE increase,0.50,9,0.00454682,0.00249182,0.00084209,0.00854766,true,true
+quantization,Quantization,tabiclv2,TabICL v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05214154,0.02652232,0.02463503,0.08258414,true,true
+quantization,Quantization,tabiclv2,TabICL v2,TFM,log_loss,Log-loss increase,0.50,9,0.06420402,0.03290069,0.02194175,0.11052729,true,true
+quantization,Quantization,tabiclv2,TabICL v2,TFM,ece,ECE increase,0.50,9,0.00240499,0.00216872,-0.00068353,0.00597878,true,false
+quantization,Quantization,xgboost,XGBoost,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.03786306,0.03305283,0.02289628,0.05332934,true,true
+quantization,Quantization,xgboost,XGBoost,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.05224994,0.03974921,0.02543682,0.08193076,true,true
+quantization,Quantization,xgboost,XGBoost,Tree ensemble,ece,ECE increase,0.50,9,0.01045060,0.00811985,0.00419606,0.01673396,true,true
+quantization,Quantization,lightgbm,LightGBM,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.03309905,0.03026823,0.01911566,0.04903057,true,true
+quantization,Quantization,lightgbm,LightGBM,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.04579648,0.04175203,0.01869816,0.07271344,true,true
+quantization,Quantization,lightgbm,LightGBM,Tree ensemble,ece,ECE increase,0.50,9,0.00413833,0.00000008,-0.00104791,0.01076170,true,false
+quantization,Quantization,random_forest,Random Forest,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.03266231,0.03082924,0.01435826,0.05183444,true,true
+quantization,Quantization,random_forest,Random Forest,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.01769905,0.03593664,-0.05359644,0.07600961,true,false
+quantization,Quantization,random_forest,Random Forest,Tree ensemble,ece,ECE increase,0.50,9,-0.00443444,0.00196933,-0.02284556,0.01447223,false,false
+unit_error,Unit error,tabpfn,TabPFN v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.11418527,0.06575997,0.05924990,0.17241434,true,true
+unit_error,Unit error,tabpfn,TabPFN v2,TFM,log_loss,Log-loss increase,0.50,9,0.13175967,0.09003159,0.07120903,0.19940757,true,true
+unit_error,Unit error,tabpfn,TabPFN v2,TFM,ece,ECE increase,0.50,9,0.02701337,0.01109537,0.00736436,0.05681354,true,true
+unit_error,Unit error,tabiclv2,TabICL v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.12476548,0.11626529,0.07762697,0.17395679,true,true
+unit_error,Unit error,tabiclv2,TabICL v2,TFM,log_loss,Log-loss increase,0.50,9,0.14765399,0.09736769,0.08567035,0.21827453,true,true
+unit_error,Unit error,tabiclv2,TabICL v2,TFM,ece,ECE increase,0.50,9,0.02112217,0.00590599,0.00335177,0.04998565,true,true
+unit_error,Unit error,xgboost,XGBoost,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05674745,0.04301587,0.02322063,0.08896581,true,true
+unit_error,Unit error,xgboost,XGBoost,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.07663648,0.07030811,0.03073945,0.13159346,true,true
+unit_error,Unit error,xgboost,XGBoost,Tree ensemble,ece,ECE increase,0.50,9,0.01943732,0.01597550,0.00906632,0.03128491,true,true
+unit_error,Unit error,lightgbm,LightGBM,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05305205,0.04666667,0.02370414,0.08308480,true,true
+unit_error,Unit error,lightgbm,LightGBM,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.06532358,0.06264860,0.02955409,0.10780885,true,true
+unit_error,Unit error,lightgbm,LightGBM,Tree ensemble,ece,ECE increase,0.50,9,0.00858656,0.00752337,-0.00028169,0.01886203,true,false
+unit_error,Unit error,random_forest,Random Forest,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,9,0.05893982,0.04857143,0.02853956,0.08989915,true,true
+unit_error,Unit error,random_forest,Random Forest,Tree ensemble,log_loss,Log-loss increase,0.50,9,0.03942778,0.04366044,-0.01601338,0.08104220,true,false
+unit_error,Unit error,random_forest,Random Forest,Tree ensemble,ece,ECE increase,0.50,9,-0.00055817,0.00084399,-0.01922756,0.01762668,false,false
+categorical_error,Categorical error,tabpfn,TabPFN v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,7,0.10096500,0.05996455,0.02251137,0.21198022,true,true
+categorical_error,Categorical error,tabpfn,TabPFN v2,TFM,log_loss,Log-loss increase,0.50,7,0.15801464,0.07317510,0.03017224,0.33321017,true,true
+categorical_error,Categorical error,tabpfn,TabPFN v2,TFM,ece,ECE increase,0.50,7,0.00752789,0.00427955,0.00258996,0.01308197,true,true
+categorical_error,Categorical error,tabiclv2,TabICL v2,TFM,balanced_accuracy,Balanced-accuracy degradation,0.50,7,0.09387382,0.02441891,0.01719816,0.20923836,true,true
+categorical_error,Categorical error,tabiclv2,TabICL v2,TFM,log_loss,Log-loss increase,0.50,7,0.14849690,0.04422061,0.02457357,0.32808730,true,true
+categorical_error,Categorical error,tabiclv2,TabICL v2,TFM,ece,ECE increase,0.50,7,0.00546277,0.00009072,-0.00091289,0.01313743,true,false
+categorical_error,Categorical error,xgboost,XGBoost,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,7,0.11385298,0.06210339,0.03404572,0.23093666,true,true
+categorical_error,Categorical error,xgboost,XGBoost,Tree ensemble,log_loss,Log-loss increase,0.50,7,0.22607546,0.09754243,0.06269376,0.46758943,true,true
+categorical_error,Categorical error,xgboost,XGBoost,Tree ensemble,ece,ECE increase,0.50,7,0.05771114,0.03513627,0.02151164,0.11323399,true,true
+categorical_error,Categorical error,lightgbm,LightGBM,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,7,0.10915852,0.05727621,0.02603853,0.23369947,true,true
+categorical_error,Categorical error,lightgbm,LightGBM,Tree ensemble,log_loss,Log-loss increase,0.50,7,0.17649854,0.07131254,0.03805536,0.37272356,true,true
+categorical_error,Categorical error,lightgbm,LightGBM,Tree ensemble,ece,ECE increase,0.50,7,0.02533189,0.00756551,0.00230138,0.05489775,true,true
+categorical_error,Categorical error,random_forest,Random Forest,Tree ensemble,balanced_accuracy,Balanced-accuracy degradation,0.50,7,0.10824310,0.08034996,0.02196030,0.22578840,true,true
+categorical_error,Categorical error,random_forest,Random Forest,Tree ensemble,log_loss,Log-loss increase,0.50,7,0.13213791,0.08369264,-0.04755292,0.33279045,true,false
+categorical_error,Categorical error,random_forest,Random Forest,Tree ensemble,ece,ECE increase,0.50,7,-0.00708138,-0.01501164,-0.04635081,0.04149932,false,false

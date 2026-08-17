@@ -1,0 +1,118 @@
+{
+  "comparison": {
+    "auc_absolute_tolerance": 0.0,
+    "checkpoint_match": true,
+    "passed": true,
+    "roc_auc_absolute_difference": 0.0,
+    "roc_auc_original": 0.9042503426101623,
+    "roc_auc_reproduced": 0.9042503426101623
+  },
+  "condition": {
+    "dataset_id": 44,
+    "dataset_name": "spambase",
+    "location": "query",
+    "mechanism": "mcar",
+    "model": "tabiclv2",
+    "rate": 0.3,
+    "seed": 1907,
+    "treatment": "native"
+  },
+  "experiment_class": "deterministic_cross_project_same_seed_data_model_environment",
+  "outcome_producing_dirty_values": false,
+  "outcome_producing_migration_reproduction": true,
+  "preflight": {
+    "checks": {
+      "clean_context_unchanged": {
+        "actual": "e055ad4896a290af6825b05356b8fe0ca84ea43dbfaa0924475fa023df5e6fba",
+        "expected": "e055ad4896a290af6825b05356b8fe0ca84ea43dbfaa0924475fa023df5e6fba",
+        "match": true
+      },
+      "query_mask_sha256": {
+        "local": "261b1b36e3575dd598cbbb4315b74fd0b4f97bb41a9a286b24aef61201166fdd",
+        "match": true,
+        "source": "261b1b36e3575dd598cbbb4315b74fd0b4f97bb41a9a286b24aef61201166fdd"
+      },
+      "source_injector_sha256": {
+        "actual": "27AC0EC4D6B3963063C4021FC4622603B2BC10529C80C6AA1616C6AD2E629C89",
+        "expected": "27AC0EC4D6B3963063C4021FC4622603B2BC10529C80C6AA1616C6AD2E629C89",
+        "match": true
+      },
+      "source_output_sha256": {
+        "actual": "EEF40D23041E1DD2892761D1E6FDCE8C9A39CB2A56385C7CF8FB69B41A5B7C2F",
+        "expected": "EEF40D23041E1DD2892761D1E6FDCE8C9A39CB2A56385C7CF8FB69B41A5B7C2F",
+        "match": true
+      },
+      "split": {
+        "X_test_sha256": {
+          "local": "b0ea005d143636544542abfa7344b3f54abe3b4b3d12818e7d42d9d97bc46b5d",
+          "match": true,
+          "source": "b0ea005d143636544542abfa7344b3f54abe3b4b3d12818e7d42d9d97bc46b5d"
+        },
+        "X_train_sha256": {
+          "local": "e055ad4896a290af6825b05356b8fe0ca84ea43dbfaa0924475fa023df5e6fba",
+          "match": true,
+          "source": "e055ad4896a290af6825b05356b8fe0ca84ea43dbfaa0924475fa023df5e6fba"
+        },
+        "test_indices_sha256": {
+          "local": "5ae208966c62a5c60abba91f9d71a3925ec98ba3e27f3e43ae14c21c38f998f3",
+          "match": true,
+          "source": "5ae208966c62a5c60abba91f9d71a3925ec98ba3e27f3e43ae14c21c38f998f3"
+        },
+        "train_indices_sha256": {
+          "local": "6a7ed76892ad830a135f4ca0cb757db86243a4c923254bc6505532a47b96f26a",
+          "match": true,
+          "source": "6a7ed76892ad830a135f4ca0cb757db86243a4c923254bc6505532a47b96f26a"
+        }
+      },
+      "tabicl_checkpoint_sha256": {
+        "actual": "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0",
+        "configured": "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0",
+        "match": true,
+        "source": "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0"
+      },
+      "tabicl_package": {
+        "expected": "2.1.1",
+        "installed": "2.1.1",
+        "match": true
+      }
+    },
+    "condition": {
+      "dataset_id": 44,
+      "dataset_name": "spambase",
+      "location": "query",
+      "mechanism": "mcar",
+      "model": "tabiclv2",
+      "rate": 0.3,
+      "seed": 1907,
+      "treatment": "native"
+    },
+    "outcome_producing": false,
+    "source_task_id": "978fda0ee7280f41ec965fc0",
+    "status": "READY"
+  },
+  "reproduced": {
+    "metrics": {
+      "balanced_accuracy": 0.7525750667650573,
+      "ece_10_equal_width": 0.1395676181379518,
+      "log_loss": 0.5011519887826257,
+      "roc_auc": 0.9042503426101623
+    },
+    "model_provenance": {
+      "checkpoint_sha256": "BDC7DBD5E4FF21F8F0456FCF90C6B7CDF72DBEA960F2D05B19BEC19F9B3D4ED0",
+      "checkpoint_version": "tabicl-classifier-v2-20260212.ckpt",
+      "device": "cuda",
+      "empty_feature_compatibility": {
+        "applied": false,
+        "feature_indices": []
+      },
+      "model": "tabiclv2",
+      "n_estimators": 8,
+      "package": "tabicl==2.1.1",
+      "seed": 1907
+    },
+    "probabilities_sha256": "97967412869a0f9e1bdfe459868adc395347ee7075c80620b207322bf590835c",
+    "query_mask_sha256": "261b1b36e3575dd598cbbb4315b74fd0b4f97bb41a9a286b24aef61201166fdd"
+  },
+  "source_task_id": "978fda0ee7280f41ec965fc0",
+  "verification_status": "VERIFIED"
+}

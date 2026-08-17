@@ -1,0 +1,26 @@
+corruption,corruption_label,model,model_label,model_family,affected_cell_rate,n_datasets,mean_roc_auc_degradation,median_roc_auc_degradation,ci_low,ci_high
+measurement_noise,Measurement noise,tabpfn,TabPFN v2,TFM,0.50,9,0.05395121,0.02732864,0.02060121,0.09541634
+measurement_noise,Measurement noise,tabiclv2,TabICL v2,TFM,0.50,9,0.05105852,0.02862611,0.02102527,0.08742799
+measurement_noise,Measurement noise,xgboost,XGBoost,Tree ensemble,0.50,9,0.05026808,0.03367196,0.02592936,0.08048777
+measurement_noise,Measurement noise,lightgbm,LightGBM,Tree ensemble,0.50,9,0.04872358,0.03247619,0.02526422,0.07848321
+measurement_noise,Measurement noise,random_forest,Random Forest,Tree ensemble,0.50,9,0.04013010,0.03241487,0.01620832,0.06613517
+outlier,Outlier,tabpfn,TabPFN v2,TFM,0.50,9,0.10053654,0.07321854,0.05941116,0.14682060
+outlier,Outlier,tabiclv2,TabICL v2,TFM,0.50,9,0.09967429,0.07775538,0.06320381,0.13968004
+outlier,Outlier,xgboost,XGBoost,Tree ensemble,0.50,9,0.11986205,0.13008415,0.08716865,0.15299454
+outlier,Outlier,lightgbm,LightGBM,Tree ensemble,0.50,9,0.11172926,0.12949977,0.07945434,0.14309394
+outlier,Outlier,random_forest,Random Forest,Tree ensemble,0.50,9,0.11439646,0.11004558,0.07711142,0.15469941
+quantization,Quantization,tabpfn,TabPFN v2,TFM,0.50,9,0.02653940,0.01891625,0.01018383,0.04769281
+quantization,Quantization,tabiclv2,TabICL v2,TFM,0.50,9,0.03155496,0.02195465,0.01242767,0.05524620
+quantization,Quantization,xgboost,XGBoost,Tree ensemble,0.50,9,0.02846670,0.02424999,0.01405721,0.04572010
+quantization,Quantization,lightgbm,LightGBM,Tree ensemble,0.50,9,0.02780075,0.02464268,0.01275041,0.04538979
+quantization,Quantization,random_forest,Random Forest,Tree ensemble,0.50,9,0.02733393,0.02725793,0.01353575,0.04280883
+unit_error,Unit error,tabpfn,TabPFN v2,TFM,0.50,9,0.08836675,0.06992169,0.04218579,0.14521519
+unit_error,Unit error,tabiclv2,TabICL v2,TFM,0.50,9,0.09331096,0.07504675,0.05389006,0.13679816
+unit_error,Unit error,xgboost,XGBoost,Tree ensemble,0.50,9,0.04994057,0.04314286,0.02078344,0.08216459
+unit_error,Unit error,lightgbm,LightGBM,Tree ensemble,0.50,9,0.04614474,0.05115344,0.01994761,0.07668666
+unit_error,Unit error,random_forest,Random Forest,Tree ensemble,0.50,9,0.04971099,0.04583333,0.02216137,0.08015706
+categorical_error,Categorical error,tabpfn,TabPFN v2,TFM,0.50,7,0.08874001,0.04179539,0.01641834,0.19336181
+categorical_error,Categorical error,tabiclv2,TabICL v2,TFM,0.50,7,0.08244280,0.01689674,0.00972817,0.19176167
+categorical_error,Categorical error,xgboost,XGBoost,Tree ensemble,0.50,7,0.10472212,0.04701093,0.02579517,0.22287116
+categorical_error,Categorical error,lightgbm,LightGBM,Tree ensemble,0.50,7,0.10093483,0.04704516,0.02215973,0.21706064
+categorical_error,Categorical error,random_forest,Random Forest,Tree ensemble,0.50,7,0.10301154,0.06424413,0.01987818,0.22018840

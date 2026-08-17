@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "freeze_date": "2026-08-14",
+  "outcomes_accessed": false,
+  "selection_rule": {
+    "rows": {"min": 1000, "max": 10000},
+    "predictors": {"min": 10, "max": 100},
+    "classes": 2,
+    "native_missing_fraction": {"max_exclusive": 0.05},
+    "reusable_license_required": true,
+    "deduplicate_underlying_key": true,
+    "target_count": 11,
+    "c5_minimum_categorical_predictors": 3,
+    "c5_target_count": 7
+  },
+  "source_provenance": {
+    "metadata_manifest": "external/tfm-missingness/data/phase2-confirmatory-manifest.json",
+    "metadata_manifest_sha256": "48A5EEFC649A3AABA51E1C87FE8819765FA82E23844BE1FE79FFA152F5DBEE70",
+    "source_metadata_aggregate_sha256": "891A171C0218EE32E189D8F6DD430D4676F0CC8E445BD23342D9F5B633103159",
+    "discovery_metadata_source": "external/tfm-missingness/data/processed",
+    "citation_refresh_date": "2026-08-14",
+    "citation_verification_tools": ["paper-search CLI", "OpenML official API"]
+  },
+  "datasets": [
+    {"data_id": 3, "name": "kr-vs-kp", "version": 1, "rows": 3196, "predictors": 36, "categorical_predictors": 36, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/3", "citation": "https://archive.ics.uci.edu/ml/citation_policy.html", "citation_status": "present_in_cached_metadata", "underlying_key": "original_url:https://archive.ics.uci.edu/ml/datasets/chess+(king-rook+vs.+king-pawn)", "c5": true},
+    {"data_id": 24, "name": "mushroom", "version": 1, "rows": 8124, "predictors": 22, "categorical_predictors": 22, "native_missing_fraction": 0.013875833669038986, "license": "Public", "source_url": "https://www.openml.org/d/24", "citation": "The Audubon Society Field Guide to North American Mushrooms (1981), G. H. Lincoff (Pres.)", "citation_status": "present_in_cached_metadata", "underlying_key": "original_url:https://archive.ics.uci.edu/ml/datasets/mushroom", "c5": true},
+    {"data_id": 31, "name": "credit-g", "version": 1, "rows": 1000, "predictors": 20, "categorical_predictors": 13, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/31", "citation": "Hofmann, H. (1994). Statlog (German Credit Data). UCI Machine Learning Repository.", "citation_identifier": "https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)", "citation_status": "verified_openml_official", "underlying_key": "openml:31", "c5": true},
+    {"data_id": 44, "name": "spambase", "version": 1, "rows": 4601, "predictors": 57, "categorical_predictors": 0, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/44", "citation": "Hopkins, M., Reeber, E., Forman, G., and Suermondt, J. (1999). Spambase. UCI Machine Learning Repository.", "citation_identifier": "https://archive.ics.uci.edu/ml/datasets/spambase", "citation_status": "verified_openml_official", "underlying_key": "openml:44", "c5": false},
+    {"data_id": 802, "name": "pbcseq", "version": 2, "rows": 1945, "predictors": 18, "categorical_predictors": 6, "native_missing_fraction": 0.03236218223364753, "license": "Public", "source_url": "https://www.openml.org/d/802", "citation": "Murtaugh, P. A., Dickson, E. R., Van Dam, G. M., Malinchoc, M., Grambsch, P. M., Langworthy, A. L., and Gips, C. H. (1994). Primary biliary cirrhosis: Prediction of short-term survival based on repeated patient visits. Hepatology, 20(1), 126-134.", "citation_identifier": "https://doi.org/10.1002/hep.1840200120", "citation_status": "verified_openml_lineage_and_crossref", "underlying_key": "name:pbcseq", "c5": true},
+    {"data_id": 1049, "name": "pc4", "version": 1, "rows": 1458, "predictors": 37, "categorical_predictors": 0, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/1049", "citation": "Sayyad Shirabad and Menzies (2005), The PROMISE Repository of Software Engineering Databases", "citation_status": "inherited_from_same_source_collection", "underlying_key": "openml:1049", "c5": false},
+    {"data_id": 1487, "name": "ozone-level-8hr", "version": 1, "rows": 2534, "predictors": 72, "categorical_predictors": 0, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/1487", "citation": "Zhang, K., and Fan, W. (2008). Forecasting skewed biased stochastic ozone days: Analyses, solutions and beyond. Knowledge and Information Systems, 14(3), 299-326.", "citation_identifier": "https://doi.org/10.1007/s10115-007-0095-1", "citation_status": "verified_openml_and_crossref", "underlying_key": "name:ozonelevel8hr", "c5": false},
+    {"data_id": 1504, "name": "steel-plates-fault", "version": 1, "rows": 1941, "predictors": 33, "categorical_predictors": 0, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/1504", "citation": "Buscema, M., and Tastle, W. (2010). A new meta-classifier. Annual Meeting of the North American Fuzzy Information Processing Society, 1-7. Dataset provided by Semeion Research Center of Sciences of Communication.", "citation_identifier": "https://doi.org/10.1109/NAFIPS.2010.5548298", "citation_status": "verified_openml_and_crossref", "underlying_key": "name:steelplatesfault", "c5": false},
+    {"data_id": 42193, "name": "compas-two-years", "version": 4, "rows": 5278, "predictors": 13, "categorical_predictors": 6, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/42193", "citation": "Angwin, J., Larson, J., Mattu, S., and Kirchner, L. (2016). Machine Bias. ProPublica.", "citation_identifier": "https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing", "citation_status": "verified_openml_source_and_crossref_authorship", "underlying_key": "name:compastwoyears", "c5": true},
+    {"data_id": 44158, "name": "KDDCup09_upselling", "version": 4, "rows": 5032, "predictors": 45, "categorical_predictors": 11, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/44158", "citation": "Guyon, I., Lemaire, V., Boulle, M., Dror, G., and Vogel, D. (2010). Design and analysis of the KDD Cup 2009. ACM SIGKDD Explorations Newsletter, 11(2), 68-76.", "citation_identifier": "https://doi.org/10.1145/1809400.1809414", "citation_status": "verified_openml_and_crossref", "underlying_key": "name:kddcup09upselling", "c5": true},
+    {"data_id": 44160, "name": "rl", "version": 4, "rows": 4970, "predictors": 12, "categorical_predictors": 7, "native_missing_fraction": 0.0, "license": "Public", "source_url": "https://www.openml.org/d/44160", "citation": "Escalante, H. J., Tu, W.-W., Guyon, I., Silver, D., Viegas, E., Chen, Y., Dai, W., and Yang, Q. (2019). AutoML at NeurIPS 2018 Challenge: Design and results.", "citation_identifier": "https://doi.org/10.1007/978-3-030-29135-8_8", "citation_status": "verified_openml_challenge_lineage_and_openalex", "underlying_key": "name:rl", "c5": true}
+  ],
+  "c5_data_ids": [3, 24, 31, 802, 42193, 44158, 44160],
+  "disclosures": [
+    "OpenML 31, 44, and 1049 overlap the source missingness study's discovery panel.",
+    "OpenML 3, 24, 802, 1487, 1504, and 44160 overlap its confirmatory panel.",
+    "The COMPAS record has known sociotechnical limitations; it is used only as a predictive robustness benchmark, not for policy conclusions.",
+    "Dataset citations were refreshed on 2026-08-14 from OpenML lineage records and verified scholarly metadata; repository-only records remain cited to their authoritative source pages."
+  ]
+}
