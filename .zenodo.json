@@ -7,7 +7,7 @@
       "orcid": "0009-0003-3716-0008"
     }
   ],
-  "description": "Reproducible experiment and analysis software for a preregistered audit of TabPFN v2, TabICL v2, XGBoost, LightGBM, and Random Forest under five wrong-but-present feature-value corruptions.",
+  "description": "Reproducible experiment and analysis software for a preregistered audit of TabPFN v2, TabICL v2, XGBoost, LightGBM, and Random Forest under five wrong-but-present feature-value corruptions.\n\nNew in version 1.1.0: the preregistered cleaning ablation. This adds the tfm_dirty_values_ablation package, the frozen ablation configuration, its preregistration and validation report, the 2,425-task manifest, the paired-identity probe report, the frozen ablation analysis, and the completion and result-verification records. The ablation tests one fixed off-the-shelf cleaner, Tukey-fence winsorization of numeric columns plus consolidation of unseen categorical levels, fitted only on the corrupted context partition and applied to both the context and query partitions. The result is a bounded negative one: no corruption mechanism showed a corrected positive recovery of ROC-AUC, and applying the same cleaner to already-clean input reduced ROC-AUC on every estimator tested. The version 1.0.0 degradation panel is unchanged, and no file inside the frozen tfm_dirty_values package was modified, so the earlier authorization identity remains valid.",
   "keywords": [
     "tabular foundation models",
     "data quality",
@@ -33,5 +33,5 @@
   ],
   "title": "Beyond Missingness: Reproducibility Software for a Dirty Feature Value Audit",
   "upload_type": "software",
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

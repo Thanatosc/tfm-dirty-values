@@ -1,0 +1,12 @@
+{
+  "error_count": 0,
+  "errors": [],
+  "expected_tasks": 2425,
+  "experiment_id": "dirty-values-cleaning-ablation-v1",
+  "output_set_identity_sha256": "3809E92EF23FE60EFB209528713BBEC5479EA718CAC923D30478518489A09F1B",
+  "outputs_on_disk": 2425,
+  "rows": 2425,
+  "schema_version": "1.0",
+  "status": "VERIFIED",
+  "verified_outputs": 2425
+}

@@ -1,0 +1,141 @@
+schema_version: "1.0"
+experiment_id: "dirty-values-cleaning-ablation-v1"
+protocol_version: "phase3_prereg_v1"
+freeze_date: "2026-08-25"
+status: "blocked_pending_human_authorization"
+runnable: false
+
+# Phase 3 minimal cleaning ablation. Frozen by
+# research/phase3-cleaning-ablation-preregistration.md
+#
+# Phase 2 is reused read-only as the comparison arms. Nothing in this file may
+# write into results/full_study/ or alter configs/full_study.yaml.
+
+outcome_boundary:
+  phase2_outcomes_used_as_frozen_comparison_arms: true
+  phase2_results_mutable: false
+  phase3_outcomes_observed: false
+  new_corruption_mechanisms_allowed: false
+  cleaner_tuning_allowed: false
+
+charter_basis:
+  document: "题目A-TFM特征污染审计-立项材料.md"
+  section: "8 风险登记与降档规则"
+  clause: "可补一个最小消融(清洗 vs 不清洗的收益),不扩为方法章"
+  owner_authorized_unfreeze_date: "2026-08-25"
+
+inherits:
+  config: configs/full_study.yaml
+  inherited: [datasets, seeds, split, models, corruption_parameters, panels, data_processed]
+  # Recorded for provenance only and not recomputable from this public
+  # copy: the identity hashes scripts/runtime.ps1, which the public
+  # release rewrites to drop machine-specific interpreter discovery.
+  phase2_runtime_code_identity: "9325544b8adb82eaa4ddbc99c12b01364315edeaddf17e7fe68d7e41efe8700d"
+  phase2_analysis_sha256: "7D9389384762BC04BD352F0540F225D05D92B8F60B99D309232ADC0D9EBBFE30"
+
+cleaner:
+  id: "tukey_winsorize_plus_unseen_level_to_mode_v1"
+  module: "tfm_dirty_values_ablation.cleaning"
+  fit_scope: "corrupted_context_only"
+  applied_to: [context, query]
+  sees_clean_data: false
+  sees_query_when_fitting: false
+  sees_labels: false
+  parameters:
+    numeric_method: tukey_fence_winsorization
+    iqr_multiplier: 1.5
+    categorical_method: unseen_level_to_context_mode
+  mechanism_specific_variants: none
+
+arms:
+  a_clean_baseline:      {corruption: clean,      cleaned: false, source: reuse_phase2}
+  b_corrupted_uncleaned: {corruption: mechanism,  cleaned: false, source: reuse_phase2}
+  c_corrupted_cleaned:   {corruption: mechanism,  cleaned: true,  source: execute_phase3}
+  d_clean_cleaned:       {corruption: clean,      cleaned: true,  source: execute_phase3}
+
+corruptions:
+  enabled: [measurement_noise, outlier, quantization, unit_error, categorical_error]
+  affected_cell_rates: [0.15, 0.50]
+  rate_scope_rationale: "0.15 sits below and 0.50 above the Tukey breakdown point; see preregistration Amendment 1"
+
+analysis:
+  primary_metric: roc_auc
+  secondary_metrics: [balanced_accuracy, log_loss, ece]
+  primary_unit: dataset
+  seed_aggregation: arithmetic_mean
+  exact_test: two_sided_sign_flip_on_dataset_aggregates
+  alpha: 0.05
+  multiple_comparison: holm_within_hypothesis_family
+  bootstrap_resamples: 10000
+  bootstrap_seed: 260825
+  recovery_fraction_min_denominator: 0.005
+  confirmatory_hypotheses:
+    h4: mean_tfm_recovery_vs_zero_per_mechanism_per_rate
+    h5: mean_tfm_cleaning_cost_on_clean_data_vs_zero
+  h4_family_size: 10
+  h5_family_size: 1
+  tree_recovery: descriptive_only
+  individual_model_contrasts: exploratory_effect_sizes_only
+  mechanism_ranking: descriptive_only
+  secondary_metrics_scope: descriptive_only
+
+expected_counts:
+  arm_c_numeric_tasks: 1800
+  arm_c_categorical_tasks: 350
+  arm_c_tasks: 2150
+  arm_d_tasks: 275
+  total_tasks: 2425
+  reused_phase2_arm_a_tasks: 275
+  reused_phase2_arm_b_tasks: 550
+
+paired_identity_probe:
+  required_before_outcomes: true
+  description: "Phase 3 must reproduce frozen Phase 2 arm-B metrics exactly from the same split and corruption seeds"
+  tolerance: 0.0
+  probe_cells:
+    - {dataset_id: 31,   seed: 1907, corruption: outlier,           rate: 0.50, model: xgboost}
+    - {dataset_id: 44,   seed: 2027, corruption: measurement_noise, rate: 0.15, model: lightgbm}
+    - {dataset_id: 1049, seed: 4049, corruption: quantization,      rate: 0.50, model: random_forest}
+    - {dataset_id: 3,    seed: 6029, corruption: categorical_error, rate: 0.15, model: xgboost}
+    - {dataset_id: 802,  seed: 8089, corruption: unit_error,        rate: 0.50, model: lightgbm}
+
+runtime_estimation:
+  execution_mode: serial_single_worker_single_gpu
+  phase2_empirical_mean_task_seconds: 1.543
+  phase2_empirical_wall_hours: 1.96
+  phase2_empirical_tasks: 4575
+  scenarios:
+    expected_hours: [1.0, 1.5]
+    conservative_hours: [2, 3]
+  eta_policy: observed_completed_task_median_after_start
+
+execution:
+  architecture: serial_worker
+  stop_semantics: finish_current_task_then_stop
+  resume_policy: requeue_interrupted_running_task_after_lock_acquisition
+  result_commit: atomic_json_before_sqlite_completion
+  require_complete_manifest_for_confirmatory_analysis: true
+
+worker:
+  max_attempts: 2
+  heartbeat_seconds: 15
+  stale_heartbeat_seconds: 120
+
+paths:
+  data_processed: data/full-study-processed
+  result_dir: results/cleaning_ablation
+  database: results/cleaning_ablation/state.sqlite3
+  events: results/cleaning_ablation/events.jsonl
+  heartbeat: results/cleaning_ablation/heartbeat.json
+  control_dir: results/cleaning_ablation/control
+  outputs: results/cleaning_ablation/outputs
+  task_manifest: artifacts/phase3/cleaning-ablation-task-manifest.json
+  preflight_report: artifacts/phase3/cleaning-ablation-preflight.json
+  completion_report: results/cleaning_ablation/completion.json
+  analysis: results/cleaning_ablation/analysis.json
+  authorization: research/phase3-cleaning-ablation-authorization.json
+  phase2_database: results/full_study/state.sqlite3
+  phase2_outputs: results/full_study/outputs
+  phase2_analysis: results/full_study/analysis.json
+  phase2_authorization: research/phase2-full-study-authorization.json
+  preregistration: research/phase3-cleaning-ablation-preregistration.md
