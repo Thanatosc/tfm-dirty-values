@@ -1,0 +1,16 @@
+{
+  "adaptations": [
+    "Input and checkpoint paths are supplied by the caller",
+    "Fit and prediction functions are extracted without numerical changes",
+    "Prior-result comparison, Windows process locks and historical scheduling are omitted",
+    "New outputs are separate reexecutions; no archived outputs are overwritten"
+  ],
+  "format_version": 1,
+  "source_files": {
+    "component_core": "f7f013c502deea7669e13df5296c909784bc8c6ec76631c6a7ec9f8036400121",
+    "corruption_inputs": "0a1e7dfb33cd782b7d1fba8baaab7ed3733418833d6f40bc4edfd1ecc530b697",
+    "cpu_execute": "2df1fda6dcf0144f0e6cbb2479a5753ff4e85609552816f83291ba7cedb05038",
+    "gpu_execute": "7ffc4386de577bcea5193b1bf4d331acdda1fe9beb6ec8b087a844b0431ff9fc",
+    "model_controls": "8acdcc892c1391186683c78798f3e0a1614b243606b2b5ae1498a1221a2a429e"
+  }
+}

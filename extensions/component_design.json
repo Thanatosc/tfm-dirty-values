@@ -1,0 +1,105 @@
+{
+  "bootstrap_resamples": 10000,
+  "categorical_arms": [
+    "legacy",
+    "ordinal",
+    "onehot",
+    "native_for_xgboost_and_lightgbm",
+    "rf_ordinal_full",
+    "rf_onehot_full"
+  ],
+  "categorical_novel_branch_probability": 0.5,
+  "category_vocabulary_fit": "supplied_context_only",
+  "failure_rule": "Any nonfinite/out-of-range row probability invalidates the entire view; no row deletion or score imputation",
+  "format_version": 1,
+  "full_panel_rule": "All five paired seeds required per dataset; full-panel mean undefined if any dataset is incomplete",
+  "installed_source_sha256": {
+    "tabicl/_sklearn/classifier.py": "ca0d5b8c87195080315737229722bea6003e59eb2f9e05446915075b82b64f47",
+    "tabicl/_sklearn/preprocessing.py": "9213210d7cc94bd98ac2ec9c405d6ca5e7c9b7685080a9c4a05afcb1ed3f0198",
+    "tabpfn/base.py": "212a3ae600d6563ad5dd9ba196e9caf237ad940511a55d13ac3c694ce783ecd5",
+    "tabpfn/classifier.py": "10eaabaa4b503632815f09cc6e48b73217d01d910262a5d2c2d4d18e78301b13",
+    "tabpfn/config.py": "d6ac4523f5553b469b49a1e2b954bef6828d52dc23163d67f62656556c36cc8e",
+    "tabpfn/utils.py": "c9864eb1f30b01dfb39d74c1c19af52523d1cd69b9a23bd40f749070bbdfca3a"
+  },
+  "intervals": "unadjusted descriptive 95%",
+  "original_study_identity": "0fdb1397e7ed209ec400ef80b18efd809040418fd154c38261f440f626c7d7eb",
+  "outlier_sd_distance": 10,
+  "panels": {
+    "category": [
+      3,
+      24,
+      31,
+      802,
+      42193,
+      44158,
+      44160
+    ],
+    "outlier": [
+      31,
+      44,
+      802,
+      1049,
+      1487,
+      1504,
+      42193,
+      44158,
+      44160
+    ]
+  },
+  "rates": {
+    "category": [
+      0.15,
+      0.5
+    ],
+    "outlier": [
+      0.05,
+      0.5
+    ]
+  },
+  "seeds": [
+    1907,
+    2027,
+    4049,
+    6029,
+    8089
+  ],
+  "status": "exploratory",
+  "study": "component_and_categorical_interface_controls",
+  "unit_of_analysis": "dataset; five paired seeds",
+  "unknown_category": "NaN for ordinal/native; all-zero block for one-hot",
+  "variants": {
+    "lightgbm": {
+      "max_bin": [
+        255,
+        1023
+      ],
+      "n_estimators": 100
+    },
+    "random_forest": {
+      "min_samples_leaf": [
+        1,
+        5
+      ],
+      "n_estimators": 500
+    },
+    "tabiclv2": {
+      "outlier_threshold": [
+        4,
+        "infinity"
+      ]
+    },
+    "tabpfn": {
+      "OUTLIER_REMOVAL_STD": [
+        12,
+        null
+      ]
+    },
+    "xgboost": {
+      "n_estimators": 100,
+      "tree_method": [
+        "hist",
+        "exact"
+      ]
+    }
+  }
+}
