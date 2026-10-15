@@ -7,7 +7,7 @@
       "orcid": "0009-0003-3716-0008"
     }
   ],
-  "description": "Experiment and reproduction code for dirty-feature-value evaluations. Version 1.2.0 adds analysis of affine/compressive representations, corruption placement, fingerprint controls, outlier components and categorical interfaces. The analysis entry point consumes the companion versioned result archive.",
+  "description": "Experiment and reproduction code for dirty-feature-value evaluations, including affine/compressive representations, corruption placement, fingerprint controls, outlier components and categorical interfaces. Version 1.2.1 completes the optional figure-reproduction dependencies. The analysis entry point consumes the companion versioned result archive.",
   "keywords": [
     "tabular foundation models",
     "data quality",
@@ -20,7 +20,7 @@
   "license": "mit",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/Thanatosc/tfm-dirty-values/tree/v1.2.0",
+      "identifier": "https://github.com/Thanatosc/tfm-dirty-values/tree/v1.2.1",
       "relation": "isSupplementTo",
       "scheme": "url"
     },
@@ -33,5 +33,5 @@
   ],
   "title": "Beyond Missingness: Reproducibility Software for a Dirty Feature Value Audit",
   "upload_type": "software",
-  "version": "1.2.0"
+  "version": "1.2.1"
 }

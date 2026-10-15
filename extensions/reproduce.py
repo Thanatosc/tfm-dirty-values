@@ -51,16 +51,47 @@ def compare_tables(actual_dir,reference_dir):
         checks.append(dict(table=reference.name,rows=len(left),maximum_difference=maximum))
     return checks
 
+def render_figures(root):
+    sys.path.insert(0,str(HERE))
+    previous_report=root/"previous/reproduced/reproduction_report.json"
+    component_report=root/"components/reproduced/verification.json"
+    if not previous_report.is_file() or not component_report.is_file():
+        raise ValueError("Reconstruct the archived analyses before using --figures-only")
+    figures=module("component_figures",HERE/"plot_components.py")
+    figures.generate(root/"components",root/"components"/"figures_reproduced")
+    old_figures=module("old_figures",HERE/"plot_previous.py")
+    old_figures.HERE=root/"previous"
+    old_figures.render(root/"previous"/"reproduced",root/"previous"/"figures_reproduced")
+    pdfs=sorted([*(root/"previous/figures_reproduced").rglob("*.pdf"),
+                 *(root/"components/figures_reproduced").rglob("*.pdf")])
+    if len(pdfs)!=15:
+        raise ValueError("Expected all six main and nine supplementary figures")
+    inputs=sorted([*(root/"previous/reproduced").rglob("*.csv"),
+                   *(root/"previous/reference_analysis/original").glob("*.json"),
+                   *(root/"previous/reference_analysis/diagnostics_original").glob("*.csv"),
+                   *(root/"components/reproduced").glob("*.csv")])
+    checksums=lambda paths:{p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+    record=dict(status="ALL_FIGURES_RENDERED",figures=15,new_model_fits=0,
+                source_sha256=checksums(inputs),figure_sha256=checksums(pdfs))
+    (root/"figure_reproduction.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
+    return record
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--data-root",type=Path,required=True)
-    p.add_argument("--verify-only",action="store_true")
-    p.add_argument("--figures",action="store_true")
+    mode=p.add_mutually_exclusive_group()
+    mode.add_argument("--verify-only",action="store_true")
+    mode.add_argument("--figures",action="store_true")
+    mode.add_argument("--figures-only",action="store_true",help="Render already reconstructed analyses without repeating reconstruction")
     args=p.parse_args()
     root=args.data_root.resolve()
     files=verify_data(root)
     if args.verify_only:
         print(json.dumps(dict(status="VERIFIED_DATA_FILES",files=files)))
+        return
+    if args.figures_only:
+        result=render_figures(root)
+        print(json.dumps({k:result[k] for k in ["status","figures","new_model_fits"]}))
         return
     previous=module("previous_reproduce",HERE/"previous_reproduce.py")
     previous.HERE=root/"previous"
@@ -77,11 +108,7 @@ def main():
     design_audit=audit_module.audit(root/"components")
     checks=compare_tables(root/"components"/"reproduced",root/"components"/"reference_analysis")
     if args.figures:
-        figures=module("component_figures",HERE/"plot_components.py")
-        figures.generate(root/"components",root/"components"/"figures_reproduced")
-        old_figures=module("old_figures",HERE/"plot_previous.py")
-        old_figures.HERE=root/"previous"
-        old_figures.render(root/"previous"/"reproduced",root/"previous"/"figures_reproduced")
+        render_figures(root)
     report=dict(status="REPRODUCED",verified_data_files=files,component_table_checks=checks,
         design_verification=design_audit,
         component_study_identity=result["study_identity"],component_views=result["predictive_views"],

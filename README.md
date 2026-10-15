@@ -1,7 +1,9 @@
 # Dirty-feature-value experiments and reproducible analyses
 
-Version 1.2.0 adds the analysis code and fixed design specifications for
+Version 1.2.1 adds the analysis code and fixed design specifications for
 representation, placement, fingerprint, outlier-component and categorical-interface controls.
+The optional plotting entry point includes all required helpers and archived
+numeric estimates; it does not require manuscript files or historical figure assets.
 
 ## Reproduce the archived results
 
@@ -19,6 +21,7 @@ recomputed summary tables with the archived references. Outputs are written to
 dedicated `reproduced` folders in the extracted data archive. It does not refit models.
 
 For plots, install `extensions/requirements-figures.txt` and append `--figures`.
+If the analyses have already been reconstructed, use `--figures-only` instead.
 Use `--verify-only` to check the data files without analysis.
 
 ## Refit the component controls
