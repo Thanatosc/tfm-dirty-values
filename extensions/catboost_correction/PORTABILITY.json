@@ -1,0 +1,14 @@
+{
+  "original_analysis_sha256": "89c06c4b342c0c517eec14a6cd24690d175a708bc7011d89006cca6cd71dff67",
+  "portable_analysis_sha256": "2fd7f0c2c2abacb43a63a0f3580ed9c4c0da34f2021c89af181fe04128e4ab6e",
+  "transformations": [
+    "CLI data/output paths",
+    "validated original scalar projection loader",
+    "portable replay helper",
+    "optional plotting"
+  ],
+  "estimator_and_aggregation_changes": "None; same six CSV tables must reproduce byte-for-byte under the pinned dependencies",
+  "replay_source_sha256": "19c20d9f1fb0b393301390830264349422ac0343bf85752c6e50f25ec7d2bfe1",
+  "portable_replay_sha256": "7a3318570dad13e134f3e70652c0f5351ff15bfc97eafe28db12b7dbee007665",
+  "replay_change": "Locate unchanged hash-bound v1.2.1 injector archive in software/archives instead of data root"
+}

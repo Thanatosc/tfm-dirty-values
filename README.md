@@ -1,54 +1,55 @@
-# Dirty-feature-value experiments and reproducible analyses
+# Dirty Feature Values in Tabular Foundation Models
 
-Version 1.2.1 adds the analysis code and fixed design specifications for
-representation, placement, fingerprint, outlier-component and categorical-interface controls.
-The optional plotting entry point includes all required helpers and archived
-numeric estimates; it does not require manuscript files or historical figure assets.
+Reproducibility release **v1.3.0** (2026-10-24).
 
-## Reproduce the archived results
+Versioned software: https://doi.org/10.5281/zenodo.23620181  
+Matching result data: https://doi.org/10.5281/zenodo.23620184
 
-Download and extract the matching result-data archive from
-https://doi.org/10.5281/zenodo.21979275, then run with Python 3.11:
+This release adds a fixed descriptive CatBoost comparison to the existing
+pipeline audit. It contains code and configurations; use the matching result
+data archive for scalar records and prediction vectors. The original H1–H3
+test families are unchanged. MIT applies to software; CC BY 4.0 to original
+result data. Raw feature tables and third-party checkpoints are not included.
 
-```sh
-python -m pip install -r extensions/requirements.txt
-python extensions/reproduce.py --data-root /path/to/tfm-dirty-values-results
-```
+## Replay the CatBoost correction (no fitting or network)
 
-The command verifies data hashes and reconstructs earlier extensions from scalar
-records and component-control metrics from saved probabilities. It compares all
-recomputed summary tables with the archived references. Outputs are written to
-dedicated `reproduced` folders in the extracted data archive. It does not refit models.
-
-For plots, install `extensions/requirements-figures.txt` and append `--figures`.
-If the analyses have already been reconstructed, use `--figures-only` instead.
-Use `--verify-only` to check the data files without analysis.
-
-## Refit the component controls
-
-The optional `extensions/refit/run.py` fits the frozen component jobs.
-It requires the original split arrays and pinned models identified in
-`data/DATASETS.md`, `MODEL_ARTIFACTS.md` and `pyproject.toml`.
-Install the model environment with `uv sync --frozen`, activate that
-environment, and run each shard in turn:
+Use **Python 3.11.9** and the dedicated metric dependencies:
 
 ```sh
-python extensions/refit/run.py --splits-root /path/to/splits --model-root /path/to/models --output-root /path/to/new-run --shard cpu
-python extensions/refit/run.py --splits-root /path/to/splits --model-root /path/to/models --output-root /path/to/new-run --shard gpu
-python extensions/analyze_components.py --root /path/to/new-run
+python -m pip install -r extensions/catboost_correction/requirements.txt
+python extensions/catboost_correction/replay_correction.py --root /path/to/tfm-dirty-values-results/catboost_correction_bundle
 ```
 
-Split and checkpoint hashes must match. Use a separate output directory.
-Model refits are not guaranteed to be bitwise identical across executions;
-the archived-probability reconstruction above is the exact reporting boundary.
-Historical orchestration and original database analyses remain in tag v1.1.0
-and https://doi.org/10.5281/zenodo.22099547.
+The bundle contains `correction/`; the historical injector ZIP is retained
+unchanged in `archives/`. All 915 record hashes and 595 retained source-byte
+identities are checked. Four metrics for 320 corrective prediction vectors
+must replay exactly. The other 595 records contain scalar outcomes rather
+than prediction vectors; their verification does not constitute refitting.
 
-## Data and licenses
+## Reproduce dataset-first CatBoost tables
 
-The companion archive contains scalar records and anonymous binary labels,
-predictions and masks for the new component controls. Raw feature tables and
-third-party checkpoints are not distributed. Source code: MIT; original result
-data: CC BY 4.0. Citation metadata: `CITATION.cff`.
+```sh
+python extensions/catboost_correction/analyze_catboost.py --data-root /path/to/tfm-dirty-values-results --output /path/to/new-analysis
+```
 
-Software archive: https://doi.org/10.5281/zenodo.21979277.
+The output directory must be new. This rebuilds the six checked CSV tables
+using all five original pipelines and CatBoost, five seeds averaged within
+dataset, and fixed unadjusted dataset-bootstrap intervals. To redraw the two
+CatBoost figures, install `requirements-figures.txt` from the same directory
+and append `--figures`. No original hypothesis tests are reopened.
+
+## Preceding studies
+
+`README-v1.2.1.md` documents the retained reconstruction/refit entry points.
+Run `python extensions/reproduce.py --data-root /path/to/tfm-dirty-values-results`
+for earlier scalar and component analyses. Refit entry points are explicit
+actions requiring separately obtained input arrays and model checkpoints.
+The core model dependency lock and package version are retained; the v1.3.0
+archive tag is distinct from the internal Python package version.
+
+Software concept DOI: https://doi.org/10.5281/zenodo.21979277  
+Data concept DOI: https://doi.org/10.5281/zenodo.21979275
+
+Previous exact software DOI: https://doi.org/10.5281/zenodo.23384468  
+Previous exact data DOI: https://doi.org/10.5281/zenodo.23383120
+

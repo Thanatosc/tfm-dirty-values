@@ -1,37 +1,37 @@
 {
-  "access_right": "open",
+  "title": "Dirty Feature Values in Tabular Foundation Models: Reproducibility Software",
+  "upload_type": "software",
+  "version": "1.3.0",
   "creators": [
     {
-      "affiliation": "School of Computing and Artificial Intelligence, Southwest Jiaotong University",
       "name": "Cai, Siyu",
+      "affiliation": "School of Computing and Artificial Intelligence, Southwest Jiaotong University",
       "orcid": "0009-0003-3716-0008"
     }
   ],
-  "description": "Experiment and reproduction code for dirty-feature-value evaluations, including affine/compressive representations, corruption placement, fingerprint controls, outlier components and categorical interfaces. Version 1.2.1 completes the optional figure-reproduction dependencies. The analysis entry point consumes the companion versioned result archive.",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
   "keywords": [
     "tabular foundation models",
     "data quality",
-    "robustness",
     "feature corruption",
-    "TabPFN",
-    "TabICL"
+    "CatBoost",
+    "reproducibility"
   ],
-  "language": "eng",
-  "license": "mit",
+  "description": "Version 1.3.0 adds the fixed descriptive CatBoost extension: 915 input-matched conditions, 595 retained records and 320 corrective refits, 320 saved prediction vectors, metric replay and dataset-first analysis. Original confirmatory test families are unchanged. The preceding v1.2.1 studies remain identifiable; raw feature tables and third-party checkpoints are excluded.",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/Thanatosc/tfm-dirty-values/tree/v1.2.1",
-      "relation": "isSupplementTo",
-      "scheme": "url"
+      "identifier": "10.5281/zenodo.23620184",
+      "relation": "isSupplementedBy",
+      "scheme": "doi",
+      "resource_type": "dataset"
     },
     {
-      "identifier": "10.5281/zenodo.21979275",
-      "relation": "isSupplementedBy",
-      "resource_type": "dataset",
-      "scheme": "doi"
+      "identifier": "https://github.com/Thanatosc/tfm-dirty-values/tree/v1.3.0",
+      "relation": "isSupplementTo",
+      "scheme": "url"
     }
   ],
-  "title": "Beyond Missingness: Reproducibility Software for a Dirty Feature Value Audit",
-  "upload_type": "software",
-  "version": "1.2.1"
+  "publication_date": "2026-10-24"
 }

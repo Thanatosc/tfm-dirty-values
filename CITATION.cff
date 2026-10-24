@@ -1,18 +1,18 @@
 cff-version: 1.2.0
-message: "Please cite the versioned software and result-data records."
-title: "Beyond Missingness: Reproducibility Software for a Dirty Feature Value Audit"
+message: "Please cite the versioned software and matching result-data records."
+title: "Dirty Feature Values in Tabular Foundation Models: Reproducibility Software"
 type: software
-version: 1.2.1
-date-released: 2026-10-15
+version: 1.3.0
+date-released: 2026-10-24
 authors:
   - family-names: Cai
     given-names: Siyu
     orcid: "https://orcid.org/0009-0003-3716-0008"
     affiliation: "School of Computing and Artificial Intelligence, Southwest Jiaotong University"
 repository-code: "https://github.com/Thanatosc/tfm-dirty-values"
-doi: "10.5281/zenodo.21979277"
+doi: "10.5281/zenodo.23620181"
 license: MIT
 references:
   - type: dataset
-    title: "Beyond Missingness: Locked Result Data for a Dirty Feature Value Audit"
-    doi: "10.5281/zenodo.21979275"
+    title: "Dirty Feature Values in Tabular Foundation Models: Audited Result Data"
+    doi: "10.5281/zenodo.23620184"
